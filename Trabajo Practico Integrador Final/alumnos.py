@@ -51,7 +51,32 @@ def ordenar_por_promedio(lista):
                 # Intercambia si el siguiente promedio es mayor
                 lista[j], lista[j + 1] = lista[j + 1], lista[j]
 
+def mostrar_alumnos_ordenados_por_promedio(alumnos):
+    print("\n📋 Lista de alumnos ordenada por promedio (mayor a menor):")
+    for alumno in alumnos:
+        promedio = calcular_promedio(alumno["notas"])
+        print(f"{alumno['apellido']}, {alumno['nombre']} - Promedio: {promedio:.2f}")
 
+def busqueda_interactiva(alumnos):
+    while True:
+        print("\n🔍 Búsqueda de alumno")
+        clave = input("Ingresá nombre, apellido o DNI (o escribí 'salir' para terminar): ")
+        if clave.lower() == "salir":
+            break
+
+        resultado = buscar_alumno(clave, alumnos)
+
+        if resultado:
+            promedio = calcular_promedio(resultado["notas"])
+            estado = "APROBADO ✅" if promedio >= 6 else "DESAPROBADO ❌"
+            print(f"\n✅ Alumno encontrado:")
+            print(f"Nombre: {resultado['nombre']} {resultado['apellido']}")
+            print(f"DNI: {resultado['dni']}")
+            print(f"Notas: {resultado['notas']}")
+            print(f"Promedio: {promedio:.2f}")
+            print(f"Estado: {estado}")
+        else:
+            print("❌ Alumno no encontrado.")
 # PROGRAMA PRINCIPAL
 
 # 1. Ingreso de datos
@@ -61,28 +86,7 @@ alumnos = ingresar_alumnos()
 ordenar_por_promedio(alumnos)
 
 # 3. Mostrar alumnos ordenados
-print("\n📋 Lista de alumnos ordenada por promedio (mayor a menor):")
-for alumno in alumnos:
-    promedio = calcular_promedio(alumno["notas"])
-    print(f"{alumno['apellido']}, {alumno['nombre']} - Promedio: {promedio:.2f}")
+mostrar_alumnos_ordenados_por_promedio(alumnos)
 
 # 4. Búsqueda interactiva
-while True:
-    print("\n🔍 Búsqueda de alumno")
-    clave = input("Ingresá nombre, apellido o DNI (o escribí 'salir' para terminar): ")
-    if clave.lower() == "salir":
-        break
-
-    resultado = buscar_alumno(clave, alumnos)
-
-    if resultado:
-        promedio = calcular_promedio(resultado["notas"])
-        estado = "APROBADO ✅" if promedio >= 6 else "DESAPROBADO ❌"
-        print(f"\n✅ Alumno encontrado:")
-        print(f"Nombre: {resultado['nombre']} {resultado['apellido']}")
-        print(f"DNI: {resultado['dni']}")
-        print(f"Notas: {resultado['notas']}")
-        print(f"Promedio: {promedio:.2f}")
-        print(f"Estado: {estado}")
-    else:
-        print("❌ Alumno no encontrado.")
+busqueda_interactiva(alumnos)
