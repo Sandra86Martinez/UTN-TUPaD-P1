@@ -39,4 +39,8 @@ El programa permite:
 4.Ver presentación en YouTube : 
 https://www.youtube.com/watch?v=2xDtmXb91NQ&ab_channel=AntonelaMenna
 
+## Archivos descargables## 
+## 📎 Archivos de la presentación
+Descargar presentación en PowerPoint ./presentación%20powerpoint.pptx  
+Descargar presentación en PDF ./TP%20en%20PDF.pdf
 
